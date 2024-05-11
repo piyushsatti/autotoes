@@ -40,17 +40,32 @@ This is the bot for Tales of Exandria server. It has been made as an experiment 
 - No one wants the feature it seems...? They will later.
 
 ## Automate Market [<<<]
-- Market items can be put up for sale/auction; players can bid on them
+- Market items can be put up for sale/auction; players can bid on them.
 
 # Program Structure
 This section details how the program has been laid out, it follows the MVC architecture. These exist in the `src/main`.
 ## Member Oriented Classes
 These are models used in the project, these lie in the `src/main/model`.
 ### Player
+Encapsulates the members associated with a player.
 #### Attributes
+- player discord id
+- numbers of hours played
+- number of games played
+- number of characters created
+- linked list of characters with head pointing to latest character
 #### Members
 
+### Character
+#### Attributes
+- linked list of dtqs
+
+### DTQ
+- type of DTQ
+- character doing dtq
+
 ### DM extends Player
+Extends the player class to add DM members into the class.
 #### Attributes
 #### Members
 
@@ -87,7 +102,7 @@ Lists the methods associated with the quest class.
 
 ## To-Do
 - [ ] Talk to Irfan about tracking
-- [ ] Create SRD
+- [ ] Create System Requirement Document (SRD)
     - [ ] Talk to Irfan about req
     - [ ] 
 - [ ] Fix git issue
