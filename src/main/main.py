@@ -1,16 +1,29 @@
-# This example requires the 'message_content' intent.
+import os
+from dotenv import load_dotenv
+from typing import Final
+from discord import Intents, Client, Message
 
-import discord
+# Loads the env vars
+load_dotenv()
 
-class MyClient(discord.Client):
+class MyClient(Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
-    async def on_message(self, message):
+    async def on_message(self, message: Message):
+        if message.author == client.user:
+            return
+
         print(f'Message from {message.author}: {message.content}')
 
-intents = discord.Intents.default()
-intents.message_content = True
+if __name__ == "__main__":
+    
+    # ENC Vars
+    DISCORD_TOKEN: Final[str] = os.getenv("DISCORD_API_KEY")
 
-client = MyClient(intents=intents)
-client.run('my token goes here')
+    # Bot Setup
+    intents = Intents.default()
+    intents.message_content = True
+    client = MyClient(intents=intents)
+
+    client.run(DISCORD_TOKEN)
