@@ -27,14 +27,13 @@ class Character:
         self.is_active = p_is_active
         self.created_on = datetime.now(timezone.utc)
         self.dtq = []
+        self.player.characters.append(self)
 
     def setIsActive(self, p_is_active: bool) -> None:
 
         self.is_active = p_is_active
-        
+
         if p_is_active and self not in self.player.active_characters:
             self.player.active_characters.append(self)
-            self.player.inactive_characters.remove(self)
         else:
             self.player.active_characters.remove(self)
-            self.player.inactive_characters.append(self)

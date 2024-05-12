@@ -24,5 +24,5 @@ class Player:
         self.character_count = p_character_count
 
         self.active_characters = []
-        self.inactive_characters = []
+        self.characters = []
         self.created_on = datetime.now(timezone.utc)
