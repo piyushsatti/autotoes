@@ -37,17 +37,20 @@ This is the bot for Tales of Exandria server. It has been made as an experiment 
     - 
 
 ## Automate DTQs [<<<]
-- No one wants the feature it seems...? They will later.
+- TBD
 
 ## Automate Market [<<<]
-- Market items can be put up for sale/auction; players can bid on them.
+- TBD
 
 # Program Structure
 This section details how the program has been laid out, it follows the MVC architecture. These exist in the `src/main`.
+
 ## Member Oriented Classes
 These are models used in the project, these lie in the `src/main/model`.
+
 ### Player
 Encapsulates the members associated with a player.
+
 #### Attributes
 - player discord id
 - numbers of hours played
@@ -55,9 +58,14 @@ Encapsulates the members associated with a player.
 - number of characters created
 - linked list of characters with head pointing to latest character
 #### Members
+- createCharacter
 
 ### Character
 #### Attributes
+- name
+- sheet json
+- link to token
+- created on
 - linked list of dtqs
 
 ### DTQ
@@ -66,11 +74,14 @@ Encapsulates the members associated with a player.
 
 ### DM extends Player
 Extends the player class to add DM members into the class.
+
 #### Attributes
+
 #### Members
 
 ### Quest
 Encapsulates the members associated with a quest. 
+
 #### Attributes
 Lists the data members associated with the quest class.
 - Discord Message Link
@@ -81,29 +92,24 @@ Lists the data members associated with the quest class.
     - Expected
     - Actual
 - List of Players
-- Link to AdventureSummary
+- Link to QuestSummary
+
 #### Methods
 Lists the methods associated with the quest class.
 - Getters and setters for members # implementing type checking and null returns
 - contains methods # Generic implementation using checking object type
 
-### AdventureSummary
-Encapsulates the members associated with an adventure summary.
+### QuestSummary
+Encapsulates the members associated with an quest summary.
+
 #### Attributes
 - Discord Message Link
 - Link to DM
 - List of Players
 - Link to Quest
-- List of links to `self.type` # Allows linking of adventure summaries
+- List of links to `self.type` # Allows linking of quest summaries
+
 #### Methods
 Lists the methods associated with the quest class.
 - Getters and setters for members # implementing type checking and null returns
 - contains methods # Generic implementation using checking object type
-
-## To-Do
-- [ ] Talk to Irfan about tracking
-- [ ] Create System Requirement Document (SRD)
-    - [ ] Talk to Irfan about req
-    - [ ] 
-- [ ] Fix git issue
-- [ ] 
