@@ -22,19 +22,7 @@ class Player:
         self.playtime = p_playtime
         self.game_count = p_game_count
         self.character_count = p_character_count
-        self.characters = []
-        self.created_on = datetime.now(timezone.utc)
 
-    def createCharacter(self, p_name: str, p_sheet: dict, p_link_to_token: str) -> bool:
-        try:
-            self.characters.append(self.Character(p_name, p_sheet, p_link_to_token))
-            return True
-        except CharacterCreationException as e:
-            # should return a message that says that creation failed due to xyz reason
-            if e.type[0]:
-                print(e.message + "Incorrect parameter for name")
-            if e.type[1]:
-                print(e.message + "Incorrect parameter for sheet")
-            if e.type[2]:
-                print(e.message + "Incorrect parameter for link_to_token")
-            return False
+        self.active_characters = []
+        self.inactive_characters = []
+        self.created_on = datetime.now(timezone.utc)
