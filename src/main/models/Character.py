@@ -9,6 +9,8 @@ from main.models.Player import Player
 - name
 - sheet json
 - link to token
+- number of games played
+- numbers of hours played
 - created on
 - linked list of dtqs
 """
@@ -30,10 +32,11 @@ class Character:
         self.player.characters.append(self)
 
     def setIsActive(self, p_is_active: bool) -> None:
-
+        
         self.is_active = p_is_active
 
-        if p_is_active and self not in self.player.active_characters:
+        if p_is_active and (self not in self.player.active_characters):
             self.player.active_characters.append(self)
         else:
-            self.player.active_characters.remove(self)
+            while self in self.player.active_characters:
+                self.player.active_characters.remove(self)
