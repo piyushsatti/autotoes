@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
 
+from main.models.QuestSummary import QuestSummary
+
 """
 ### Quest
 Encapsulates the members associated with a quest. 
@@ -48,6 +50,9 @@ class Quest:
         self.__quest_end_time = datetime.now(timezone.utc)
         self.actual_quest_duration = self.__quest_end_time - self.__quest_start_time
     
+    def setQuestSummary(self, p_quest_summary: QuestSummary) -> None:
+        self.quest_summary = p_quest_summary
+
     def contains(self, **kwargs) -> list:
         """Provide kargs to query a contains method, returns a nested list of bools
 
