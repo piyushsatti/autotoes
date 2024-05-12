@@ -1,0 +1,2 @@
+class DTQexception(Exception):
+    pass
