@@ -39,4 +39,7 @@ class Character:
             self.player.active_characters.append(self)
         else:
             while self in self.player.active_characters:
-                self.player.active_characters.remove(self)
+                try:
+                    self.player.active_characters.remove(self)
+                finally:
+                    return
