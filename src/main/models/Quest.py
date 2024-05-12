@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
 
 from main.models.QuestSummary import QuestSummary
+from main.models.Character import Character
+
 
 """
 ### Quest
@@ -32,14 +34,14 @@ class Quest:
             p_quest_type: str, 
             p_quest_number: int,
             p_expected_quest_duration: int,
-            p_player_discord_ids: list
+            p_characters: list
         ) -> None:
         self.discord_msg_link = p_discord_msg_link
         self.dm_discord_id = p_dm_discord_id
         self.quest_type = p_quest_type
         self.quest_number = p_quest_number
         self.expected_quest_duration = p_expected_quest_duration
-        self.player_discord_ids = p_player_discord_ids
+        self.characters = p_characters
         self.quest_summary = None
         # Private vars for calculating quest actual time
         self.__quest_start_time = datetime.now(timezone.utc)
@@ -59,15 +61,15 @@ class Quest:
         There are four kwargs that can be used for the query. These are:
         - discord_msg_link: type discord message hyperlink
         - dm_discord_id: type discord id
-        - player_discord_ids: type list of discord ids
+        - characters: type list of discord ids
         - quest_summary: type discord message hyperlink
         Returns a list of the same size as the query, containing bools.
         Returns a list of list of bools in case of query on player discord ids
         """
-        p_discord_msg_link = kwargs["discord_msg_link"]
-        p_dm_discord_id = kwargs["dm_discord_id"]
-        p_player_discord_ids = kwargs["player_discord_ids"]
-        p_quest_summary = kwargs["quest_summary"]
+        p_discord_msg_link: str = kwargs["discord_msg_link"]
+        p_dm_discord_id: int = kwargs["dm_discord_id"]
+        p_characters: Character = kwargs["characters"]
+        p_quest_summary: QuestSummary = kwargs["quest_summary"]
 
         ret = []
 
@@ -75,10 +77,10 @@ class Quest:
             ret.append(True if p_discord_msg_link == self.discord_msg_link else False)
         if p_dm_discord_id is not None:
             ret.append(True if p_dm_discord_id == self.dm_discord_id else False)
-        if p_player_discord_ids is not None:
+        if p_characters is not None:
             ret.append(
                 [
-                    x in self.player_discord_ids for x in p_player_discord_ids
+                    x in self.player_discord_ids for x in p_characters
                 ]
             )
         if p_quest_summary is not None:
