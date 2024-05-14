@@ -9,6 +9,7 @@ This is the bot for Tales of Exandria server. It has been made as an experiment 
 - `>` mention how high or `<` how low the priority is
 
 # Features
+This section lists the commands in the bot, 
 
 ## Tracking [>]
 - Resource Points
